@@ -336,7 +336,7 @@ async function checarConvite(){
   if(!ENDPOINT.startsWith("https://"))return;
   if(CONVITE_OBRIGATORIO&&!CONVITE)return bloquear("Este formulário precisa de um link de convite. Peça o seu à Moove.");
   if(!CONVITE)return;
-  try{const r=await fetch(ENDPOINT+"?acao=validar&c="+encodeURIComponent(CONVITE));const j=await r.json();
+  try{const r=await fetch(ENDPOINT+"?acao=validar&cod="+encodeURIComponent(CONVITE));const j=await r.json();
     if(!j.ok&&CONVITE_OBRIGATORIO)return bloquear(j.erro||"Convite inválido.");
     if(j.cliente){window.CLIENTE_CONVITE=String(j.cliente);renderNav()}
   }catch(e){}
